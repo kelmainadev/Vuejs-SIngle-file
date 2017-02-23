@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> VueJs Example</title>
+<link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+<meta id="token" name="token" value="{{ csrf_token() }}">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Break It Now</h1>
+      <div id="app"> 
+        <div class="form-group">
+          <input
+                 type="text"
+                 class="form-control"
+                 placeholder="Add a new habit to break"
+                 v-model="newHabitName"
+                 v-on="keyup:createHabit | key 'enter'">
+        </div>
+        <table class="table">
+          <tr v-repeat="habit: habits">
+            <td>
+              <button
+                      class="btn btn-circle btn-primary btn-lg"
+                      v-on="click:createHabitCount(habit)"
+                      v-text="habit.count"></button>
+            </td>
+            <td style="vertical-align: middle;">
+              <h4 style="margin: 0;" v-text="habit.name"></h4>
+            </td>
+            <td
+                class="text-right"
+                style="vertical-align: middle;">
+              <button
+                      v-on="click:deleteHabit(habit)"
+                      class="btn btn-link">X</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
